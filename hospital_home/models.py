@@ -28,7 +28,7 @@ class patient(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
   
 class kindred(models.Model):
-    patient = models.ForeignKey(patient, on_delete=models.CASCADE)
+    patient = models.ForeignKey(patient, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(user, on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
