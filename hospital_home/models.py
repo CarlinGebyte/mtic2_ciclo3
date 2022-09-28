@@ -14,21 +14,21 @@ class user(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
  
 class nurse(models.Model):
-    user = models.ForeignKey(user, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(user, on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 class doctor(models.Model):
-    user = models.ForeignKey(user, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(user, on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 class kindred(models.Model):
-    user = models.ForeignKey(user, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(user, on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 class patient(models.Model):
     nurse = models.ForeignKey(nurse, on_delete=models.CASCADE, null=True)
     doctor = models.ForeignKey(doctor, on_delete=models.CASCADE, null=True)
-    kindred = models.ForeignKey(kindred, on_delete=models.CASCADE, null=True)
-    user = models.ForeignKey(user, on_delete=models.CASCADE, null=True)
+    kindred = models.OneToOneField(kindred, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(user, on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
   
 
@@ -47,6 +47,6 @@ class medical_history(models.Model):
 
 
 class assistant(models.Model):
-    user = models.ForeignKey(user, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(user, on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
