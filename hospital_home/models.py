@@ -20,17 +20,17 @@ class nurse(models.Model):
 class doctor(models.Model):
     user = models.ForeignKey(user, on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+class kindred(models.Model):
+    user = models.ForeignKey(user, on_delete=models.CASCADE, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 class patient(models.Model):
     nurse = models.ForeignKey(nurse, on_delete=models.CASCADE, null=True)
     doctor = models.ForeignKey(doctor, on_delete=models.CASCADE, null=True)
+    kindred = models.ForeignKey(kindred, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(user, on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
   
-class kindred(models.Model):
-    patient = models.ForeignKey(patient, on_delete=models.CASCADE, null=True)
-    user = models.ForeignKey(user, on_delete=models.CASCADE, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
 
 class medical_history(models.Model):
     suggestion = models.CharField(max_length=2000, null=True)
